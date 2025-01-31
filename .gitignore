@@ -1,0 +1,55 @@
+# 🚀 General
+node_modules/
+dist/
+build/
+.vscode/
+.idea/
+.DS_Store
+
+# 🔹 Python (Django)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+venv/
+env/
+*.log
+
+# 🔹 Django Migrations
+**/migrations/** 
+!**/migrations/__init__.py  # Keep __init__.py for Django
+
+# 🔹 Environment Variables
+.env
+.env.local
+.env.production
+secrets.json
+
+# 🔹 Frontend (React/TypeScript)
+frontend/node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/.parcel-cache/
+frontend/.eslintcache
+frontend/public/static/
+
+# 🔹 Logs & Dependency Caches
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml
+package-lock.json
+
+# 🔹 Coverage & Test Folders
+coverage/
+jest/
+cypress/screenshots/
+cypress/videos/
+
+# 🔹 Docker (if using)
+docker-compose.override.yml
+.dockerignore
+
+

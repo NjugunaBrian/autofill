@@ -33,7 +33,7 @@ def extract_text_from_docx(file_path):
 def parse_resume_text(text):
     resume_data = {}
     
-    resume-data['name'] = text.split('\n')[0].strip()
+    resume_data['name'] = text.split('\n')[0].strip()
 
     email_pattern = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
     email_match = re.search(email_pattern, text)
