@@ -54,6 +54,10 @@
     padding: 0.75rem  0;
 }
 
+.image{
+    width: 100%;
+}
+
 .btn{
     margin: 0;
     background: none;
@@ -65,4 +69,76 @@
     color: #fff;
     border-radius: 20px;
 
+}
+
+@media (max-width: 870px){
+    .container {
+        min-height: 800px;
+        height: 100vh;
+    }
+    .container:before{
+        width: 1500px;
+        height: 1500px;
+        left: 30%;
+        bottom: 68%;
+        transform: translateX(-50%);
+        right: initial;
+        top: initial;
+    }
+    .signin-signup{
+        width: 100%;
+        left: 50%;
+        top: 95%;
+        transform: translate(-50%, -100%);
+    }
+
+    .panel-container{
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10rem;
+    }
+
+    .panel{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        padding: 0rem 8%;
+        width: 100%;
+        gap: 2rem;
+
+    }
+    
+    .image{
+        width: 200px;
+    }
+
+    .panel h3{
+        font-size: 1.2rem;
+    }
+
+    .panel p{
+        font-size: 0.7rem;
+        padding: 0.5rem 0;
+    }
+
+    .btn{
+        width: 100px;
+        height: 35px;
+        font-size: 0.7rem;
+    }
+
+}
+
+@media (max-width: 570px){
+    form{
+        padding: 0 1.5rem;
+    }
+
+    image{
+        display: none;
+    }
+    .panel .content{
+        padding: 0.5rem 1rem;
+    }
 }

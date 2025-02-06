@@ -89,15 +89,15 @@ function App() {
           </div>
         </div>
 
-        <div className="absolute h-full w-full top-0 left-0 grid grid-cols-[repeat(2, 1fr)]">
+        <div className="absolute h-full w-full top-0 left-0 grid grid-cols-[repeat(2, 1fr)] panel-container">
           <div className="flex flex-col items-end justify-around text-center panel">
             <div className="content">
-              <h3>New Here ?</h3>
+              <h3>Job Application</h3>
               <p>Lorem ipsum dolor sit amet consectetur elit. Menus impedit quidem quibusdam</p>
               <button className="btn">Apply</button>
             </div>
 
-            <img src="../rocket-launcher.svg" className="w-full" alt="rocket" />
+            <img src="../rocket-launcher.svg" className="image" alt="rocket" />
 
           </div>
 
