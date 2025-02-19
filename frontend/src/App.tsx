@@ -14,7 +14,7 @@ function App() {
 
   const [csvFile, setcsvFile] = useState<File | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData, [e.target.name]: e.target.value,
     });
@@ -75,15 +75,15 @@ function App() {
               <div className="max-w-[380px] w-full h-[35px] bg-[#f0f0f0] my-[10px] mx-0">
                 <input type='tel' name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" className="bg-[#f0f0f0] max-w-[340px] w-full outline-none border-none text-black leading-[1]" />
               </div>
-              <div className="max-w-[380px] w-full h-[35px] bg-[#f0f0f0] my-[10px] mx-0">
-                <input type='text' name="experience" value={formData.experience} onChange={handleChange} placeholder="Experience" className="bg-[#f0f0f0] max-w-[340px] w-full outline-none border-none text-black leading-[1]" />
+              <div className="max-w-[380px] w-full bg-[#f0f0f0] my-[10px] mx-0">
+                <textarea name="experience" value={formData.experience} onChange={handleChange} placeholder="Experience" rows={1} className="bg-[#f0f0f0] max-w-[340px] w-full outline-none border-none text-black resize-none overflow-hidden leading-[1]" />
               </div>
-              <div className="max-w-[380px] w-full h-[35px] bg-[#f0f0f0] my-[10px] mx-0">
-                <input type='text' name="skills" value={formData.skills} onChange={handleChange} placeholder="Skills" className="bg-[#f0f0f0] max-w-[340px] w-full outline-none border-none text-black leading-[1]" />
+              <div className="max-w-[380px] w-full bg-[#f0f0f0] my-[10px] mx-0">
+                <textarea name="skills" value={formData.skills} onChange={handleChange} placeholder="Skills" rows={1} className="bg-[#f0f0f0] max-w-[340px] w-full outline-none border-none text-black resize-none overflow-hidden leading-[1]" />
               </div>
 
               <input type="file" accept=".csv, .pdf, .docx" onChange={handleFileChange} />
-              <button className="w-[150px] h-[49px] border-none outline-none rounded-[49px] cursor-pointer my-[10px] uppercase font-[600] hover:bg-[#CBD5E1] transition duration-300" type="submit">Submit</button>
+              <button className="w-[150px] h-[49px] border-none outline-none rounded-[49px] cursor-pointer my-[20px] md:my-[10px] uppercase font-[600] hover:bg-[#CBD5E1] transition duration-300" type="submit">Submit</button>
 
             </form>
           </div>
