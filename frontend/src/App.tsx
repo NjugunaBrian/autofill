@@ -1,6 +1,26 @@
 import axios from "axios";
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import './App.css'
+//import Cookies from "js-cookie";
+
+
+const api = axios.create({
+  baseURL: 'http://localhost:8000',
+  withCredentials: true
+});
+
+// Add a request interceptor to set the CSRF token
+api.interceptors.request.use(function (config) {
+  const csrfToken = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('csrftoken='))
+    ?.split('=')[1];
+
+  if (csrfToken) {
+    config.headers['X-CSRFToken'] = csrfToken;
+  }
+  return config;
+});
 
 function App() {
 
@@ -13,6 +33,15 @@ function App() {
   });
 
   const [csvFile, setcsvFile] = useState<File | null>(null);
+
+  useEffect(() => {
+    api
+      .get("/csrf/", { withCredentials: true })
+      .then((response) => {
+        console.log("CSRF Token Set:", response.data);
+      })
+      .catch((error) => console.error("Error fetching CSRF token:", error));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -35,9 +64,11 @@ function App() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/upload/', formDataToSend, {
+      //const csrfToken = Cookies.get("csrfToken");
+      await api.get("/csrf/", { withCredentials: true });
+      const response = await api.post('/api/upload/', formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
         },
       });
 
@@ -52,6 +83,11 @@ function App() {
       });
 
     } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error:', error.response?.data);
+        console.error('Status:', error.response?.status);
+        console.error('Headers:', error.response?.headers);
+      }
       console.error('Error uploading file', error);
 
     }
