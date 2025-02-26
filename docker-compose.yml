@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    image: backend 
+    build: ./backend
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend
+
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes: 
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+    depends_on:
+      -backend 
+    
